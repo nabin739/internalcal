@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internal Marks calculator</title>
+    <style>
+        body {
+            font-family: serif, sans-serif;
+            margin: 20px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        form {
+            background-image:url(nature\ \(2\).jpg);
+            max-width: 300px;
+            margin: 10px auto;
+            background-color: rgb(249, 251, 252);
+            margin-left: 500px;
+            background-position: center;
+             
+   
+          
+
+        }
+        /* #marksform{
+            color:#f3f5f3;
+        } */
+
+        label {
+            display:grid;
+            margin-bottom: 105px;
+            text-transform: uppercase;
+            font-size: 10px;
+            padding-left: 10px;
+            letter-spacing: 2px;
+            padding-top: 20px ;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            /* text-wrap:wrap;            */
+            /* margin-left: 50px; */
+        }
+        input {
+            width: 92%;
+           overflow:hidden;
+            padding: 10px;
+            border-radius:0%;
+            border-style:dashed;
+            margin-bottom: 5px;
+            box-sizing: border-box;
+            border-radius: 20px;
+            color: rgb(12, 12, 12);
+            box-sizing:unset;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 98px;
+            border: none;
+            border-radius: 4px;
+            cursor:pointer;
+        
+        }
+
+        h2, h3, h4, h5, h6 {
+            color: #fdf8f8;
+            text-align: center; 
+            
+            
+        }
+        
+        h2{
+            text-transform: uppercase;
+            color: #060606;
+        }
+        h3{
+            color: #0af668;
+        }
+        h4{
+            color: #080808; 
+        }
+
+        h2:nth-of-type(2) { 
+            font-size: 1.2em;
+            text-transform: uppercase;
+        }
+
+        h6 span { 
+            font-size: 18px; 
+        }
+        
+        .logo-container {
+            text-align: center; 
+        }
+        
+        .logo-container img {
+            margin: 0 10px; 
+            width: 30px; 
+            height: auto;
+        }
+        .copyright {
+            bottom: 0;
+            width: 100%;
+            background-color: black;
+            color: white;
+            padding: 2px 3;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>INTERNAL MAEK CALCULATOR</h2>
+    <h4>Created by St.Josephites..</h4>
+    <h4>(FROM CHEMICAL ENGINEERING STUDENT)</h4>
+    <div class="logo-container">
+      <h3> For Contact :</h3>  <a href="mailto:st.josephite25@gmail.com"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Gmail Logo" class="gmail-logo"></a>
+        <a href="https://www.instagram.com/st_josephite_?igsh=MWJ6MzJmN3MzNG1paQ=="><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo" class="instagram-logo"></a>
+    </div>
+
+    <form id="marksForm">
+        <label for="subject1">Subject 1(Model 1):</label>
+        <input type="number" id="subject1" name="subject1" required>
+        <h5>Internal 1: <span id="totalMarks1">0</span></h5>
+
+        <label for="subject2">Subject 2(Model 2):</label>
+        <input type="number" id="subject2" name="subject2" required>
+        <h5>Internal 2: <span id="totalMarks2">0</span></h5>
+        
+        <label for="subject3">Subject 3(Model 3):</label>
+        <input type="number" id="subject3" name="subject3" required>
+        <h5>Internal 3: <span id="totalMarks3">0</span></h5>
+        
+        <h3>Total Internals :  <span id="totalInternals">0</span>/40</h3>
+       
+        <!-- <label for="add10">Add 10 to Total Internals? (Yes/No):</label> -->
+        <select id="add10" name="add10">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+
+        <button type="button" onclick="calculateTotal()">Calculate Internal</button>
+    </form>
+        <div class="copyright">
+        &copy; 2024 St.Josephites. All rights reserved.
+    </div>
+
+    <script>
+        function calculateTotal() {
+            var subject1 = parseFloat(document.getElementById('subject1').value) || 0;
+            var totalMarks1;
+
+            if (subject1 <= 67) {
+                totalMarks1 = (subject1 * 1.5 * 0.15).toFixed();
+            } else {
+                totalMarks1 = 15;
+            }
+
+            var subject2 = parseFloat(document.getElementById('subject2').value) || 0;
+            var totalMarks2;
+
+            if (subject2 <= 67) {
+                totalMarks2 = (subject2 * 1.5 * 0.15).toFixed();
+            } else {
+                totalMarks2 = 15;
+            }
+            
+            var subject3 = parseFloat(document.getElementById('subject3').value) || 0;
+            var totalMarks3;
+
+            if (subject3 <= 67) {
+                totalMarks3 = (subject3 * 1.5 * 0.15).toFixed();
+            } else {
+                totalMarks3 = 15;
+            }
+            
+            var totalInternals = ((parseFloat(totalMarks1) + parseFloat(totalMarks2)) / 2) + parseFloat(totalMarks3);
+
+            if (document.getElementById('add10').value === 'yes') {
+                totalInternals += 10;
+            }
+
+            document.getElementById('totalMarks1').textContent = totalMarks1;
+            document.getElementById('totalMarks2').textContent = totalMarks2;
+            document.getElementById('totalMarks3').textContent = totalMarks3;
+            document.getElementById('totalInternals').textContent = totalInternals;
+        }
+    </script>
+</body>
+</html>
